@@ -125,7 +125,7 @@ class Help(commands.HelpCommand):
     def command_not_found(self, string: str, /) -> str:
         return f"**Error 404**: Command `{string}` not found!"
 
-    def subcommand_not_found(self, command: commands.Command[Any, ..., Any], string: str, /) -> str:
+    def subcommand_not_found(self, command: commands.Command, string: str, /) -> str:
         if isinstance(command, commands.Group) and len(command.all_commands) > 0:
             error_message = f"**Error 404**: Command `{command.qualified_name}` has no subcommand named `{string}`!\n"
             error_message += f"\nAvailable subcommands:\n`{'`, `'.join(command.all_commands.keys())}`"
