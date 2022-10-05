@@ -84,7 +84,7 @@ class Paginator(discord.ui.View):
 
 
 class Help(commands.HelpCommand):
-    async def send_bot_help(self, mapping: Mapping[Optional[commands.Cog], List[commands.Command[Any, ..., Any]]], /) -> None:
+    async def send_bot_help(self, mapping: Mapping[Optional[commands.Cog], List[commands.Command]], /) -> None:
         embed = Embed(title="Command Help")
         embed.description = ""
         cmd_list = []
