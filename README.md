@@ -1,6 +1,5 @@
 # hacktobot
 
-[![Build][1]][2]
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Contributors][3]][4]
 [![Commit Activity][5]][6]
@@ -8,8 +7,6 @@
 [![Twitter][9]][10]
 
 
-[1]: https://github.com/GDSC-IIIT-Kalyani/hacktobot/workflows/Build/badge.svg?branch=main
-[2]: https://github.com/GDSC-IIIT-Kalyani/hacktobot/actions?query=workflow%3ABuild+branch%3Amain
 <!-- Contributors -->
 [3]: https://img.shields.io/github/contributors/GDSC-IIIT-Kalyani/hacktobot
 [4]: https://github.com/GDSC-IIIT-Kalyani/hacktobot/graphs/contributors
@@ -27,7 +24,7 @@ An open-source Discord bot to introduce and encourage participants to contribute
 
 ### Requirements:
 
-1. [Python 3.9+](https://www.python.org/downloads/)
+1. [Python 3.8+](https://www.python.org/downloads/)
 2. [Git](https://git-scm.com/downloads)
 3. Test server
 4. [Bot Account](https://discordpy.readthedocs.io/en/stable/discord.html)
