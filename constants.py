@@ -11,6 +11,8 @@ class Client:
 
 class Colours:
     blue = 0x0279FD
+    python_blue = 0x4B8BBE
+    python_yellow = 0xFFD43B
     twitter_blue = 0x1DA1F2
     bright_green = 0x01D277
     dark_green = 0x1F8B4C
@@ -46,6 +48,7 @@ class Emojis:
     fast_forward = "\u23e9"
     arrow_backward = "\u25c0\ufe0f"
     arrow_forward = "\u25b6\ufe0f"
+
 
 class Tokens:
     github = environ.get("GITHUB_TOKEN")
