@@ -3,7 +3,6 @@
 
 - **Name:** <!--Mention Your name-->
 - **GitHub ID:** <!-- Mention your GitHub ID -->
-- **Idenitfy yourself:** <!-- Mention your role -->
 
 
 <!-- Mention the following details and these are mandatory -->
