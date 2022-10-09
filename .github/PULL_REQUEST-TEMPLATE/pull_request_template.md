@@ -7,7 +7,7 @@
 
 <!-- Mention the following details and these are mandatory -->
 
-Closes: #Issue number that will be closed through this PR
+Closes: #Issue number that will be closed through this Pull Request
 
 ### Describe the add-ons or changes you've made 📃
 
