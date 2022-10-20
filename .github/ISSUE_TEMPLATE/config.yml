@@ -1,0 +1,10 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GDSC IIIT Kalyani
+    url: https://gdsc.bio.link/
+    about: A Google Developers programme for university students with an aim to promote skill up-gradation in latest technologies.
+  - name: GDSC IIIT Kalyani Discord
+    url: https://discord.gg/tcaxPN6CNs
+    about: Contributors can contact the maintainers here.
+  - name: Contributing Guide
+    url: https://github.com/GDSC-IIIT-Kalyani/hacktobot/blob/main/CONTRIBUTING.md
