@@ -11,8 +11,9 @@ COMMANDS_PER_PAGE = 5
 
 
 class Paginator(discord.ui.View):
-    def __init__(self, cmd_list, timeout=180):
+    def __init__(self, ctx: commands.context, cmd_list, timeout=180):
         super().__init__(timeout=timeout)
+        self.ctx = ctx
         self.index = 0
         self.cmd_list = cmd_list
         self.length = len(cmd_list)
@@ -48,7 +49,11 @@ class Paginator(discord.ui.View):
         self.check_disable()
         for child in self.children:
             child.disabled = self.button_status[child.custom_id]
-        await interaction.response.edit_message(embed=self.generate_page(), view=self)
+
+        if self.ctx.author.id == interaction.user.id:
+            await interaction.response.edit_message(embed=self.generate_page(), view=self)
+        else:
+            await interaction.response.send_message(content="Not your button!", ephemeral=True)
 
     @discord.ui.button(emoji=Emojis.arrow_backward, style=discord.ButtonStyle.gray, custom_id="prev", disabled=True)
     async def prev(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
@@ -57,14 +62,22 @@ class Paginator(discord.ui.View):
         self.check_disable()
         for child in self.children:
             child.disabled = self.button_status[child.custom_id]
-        await interaction.response.edit_message(embed=self.generate_page(), view=self)
+
+        if self.ctx.author.id == interaction.user.id:
+            await interaction.response.edit_message(embed=self.generate_page(), view=self)
+        else: 
+            await interaction.response.send_message(content="Not your button!", ephemeral=True)
 
     @discord.ui.button(emoji=Emojis.wastebasket, style=discord.ButtonStyle.gray, custom_id="stop")
     async def trash(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         self.stop()
         for child in self.children:
             child.disabled = True
-        await interaction.response.edit_message(view=self)
+        
+        if self.ctx.author.id == interaction.user.id:
+            await interaction.response.edit_message(view=self)
+        else:
+            await interaction.response.send_message(content="Not your button!", ephemeral=True)
 
     @discord.ui.button(emoji=Emojis.arrow_forward, style=discord.ButtonStyle.gray, custom_id="next")
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
@@ -72,7 +85,11 @@ class Paginator(discord.ui.View):
         self.check_disable()
         for child in self.children:
             child.disabled = self.button_status[child.custom_id]
-        await interaction.response.edit_message(embed=self.generate_page(), view=self)
+        
+        if self.ctx.author.id == interaction.user.id:
+            await interaction.response.edit_message(embed=self.generate_page(), view=self)
+        else:
+            await interaction.response.send_message(content="Not your button!", ephemeral=True)
 
     @discord.ui.button(emoji=Emojis.fast_forward, style=discord.ButtonStyle.gray, custom_id="last")
     async def last(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
@@ -80,7 +97,11 @@ class Paginator(discord.ui.View):
         self.check_disable()
         for child in self.children:
             child.disabled = self.button_status[child.custom_id]
-        await interaction.response.edit_message(embed=self.generate_page(), view=self)
+
+        if self.ctx.author.id == interaction.user.id:
+            await interaction.response.edit_message(embed=self.generate_page(), view=self)
+        else:
+            await interaction.response.send_message(content="Not your button!", ephemeral=True)
 
 
 class Help(commands.HelpCommand):
@@ -96,7 +117,7 @@ class Help(commands.HelpCommand):
             embed.description += f"`{cmd.name}`\n{cmd.short_doc}\n\n"
         embed.set_footer(text=f"Page: 1/{len(cmd_list)}")
         channel = self.get_destination()
-        view = Paginator(cmd_list=cmd_list)
+        view = Paginator(ctx=self.context, cmd_list = cmd_list)
         view.message = await channel.send(embed=embed,  view=view)
 
     async def send_command_help(self, command: commands.Command, /) -> None:
